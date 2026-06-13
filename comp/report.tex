@@ -103,47 +103,61 @@ Attack Genome：\\
 \textbf{跨架构安全审计框架}。
 \textbf{唯一的核心发现}：\textit{Failure Basin 几何在跨视觉表征上守恒}。
 
-主要贡献（按承重强度排序）：
+\begin{center}
+\textbf{⭐ 5 层证据链（Tier B + Tier C-2 闭合）}
+\end{center}
 
 \begin{enumerate}[leftmargin=*]
-\item \textbf{承重墙 1 · Attack Genome}：首次把 37 维基因空间
-      正式定义为\textbf{感知攻击面}，配合 Gene-Oriented 威胁模型
-      （敌手—能力—收益三件套），把"鲁棒性研究"升级为"安全审计"。
-\item \textbf{承重墙 2 · Cross-Architecture Failure Law}：
-      6/6 跨规划器 XGBoost AUC $> 0.70$（最强 CNN$\to$DINO 达 $0.798$），
-      $\{s^*, w\}$ 跨架构方差 $0.013$，
-      即"失败的\textbf{几何}在表征间守恒"——
-      区别于"失败的幅度（fail rate）"的传统报告。
-\item \textbf{承重墙 3 · Failure Basin 数学定义}：
-      把"Basin"从经验现象提升为可定义、可测量、可反驳的几何对象：
-      \begin{equation*}
-        \mathcal{B}_{\tau} = \{ \mathbf{g} \in \mathcal{G} \mid P(\text{success} \mid \mathbf{g}) < \tau \},
-        \quad
-        s^*,\; w,\; M
-      \end{equation*}
-      4 个核心算子全部由 $88\,560$ 真实 planner 决策
-      独立验证（不依赖 XGBoost），89.2\% 单调率 + CNN basin
-      1.5$\times$ 宽于 DINO/TF。
-\item \textbf{可操控}（因果验证）：per-sample SHAP top-$K$ pushback
-      触发 86\% / 71\% / 100\% flip (CNN/DINO/TF, $K\!=\!10$)，
-      证明基因组合可被反向推动修复；
-      同因异果：$88\%$ / $82\%$ / $80\%$ 的失败样本中
-      \gene{edge\_mean} 是 per-sample top1 驱动基因，
-      印证"跨表征不变基因 $=$ 最强因果杠杆 $=$ 跨架构通用武器"。
+\item \textbf{Level 1 · Observation}：三类规划器失败率 37.4\% / 9.4\% / 5.0\%，
+      7.5$\times$ 差距（CNN 最脆弱）。
+\item \textbf{Level 2 · Pattern}：同规划器 gene$\to$fail XGBoost 5-fold AUC
+      $0.898$ / $0.894$ / $\mathbf{0.943}$——基因空间决定性编码失败。
+\item \textbf{Level 3 · Law}：6/6 跨规划器 XGBoost 转移 AUC $> 0.70$
+      （最强 CNN$\to$DINO 达 $0.798$）——失败的\textbf{几何}跨表征守恒。
+\item \textbf{Level 4 · Causality (XGBoost 层)}：per-sample SHAP top-$K$
+      pushback 触发 86\% / 71\% / 100\% flip (CNN/DINO/TF, $K\!=\!10$)，
+      80--88\% 失败样本共享 \gene{edge\_mean} 为 top1 驱动基因——
+      印证"跨表征不变基因 $=$ 最强因果杠杆"。
+\item \textbf{Level 5 · Failure Basin 独立验证}：89.2\% (scene, attack, planner)
+      case 呈单调退化（攻击越强越易挂），CNN basin 1.5$\times$ 宽于 DINO/TF——
+      Failure Basin 从分析者构造升级为\textbf{真实几何对象}。
+\item \textbf{⭐ Level 6 · Causality (执行层)}：Tier C-2 用 1883 NavDream
+      scenes × CNN-GTRS / DINO-GTRS \textbf{真 forward pass}验证——
+      CNN Rain K=5 干预 50\% 修复（$n\!=\!20$），n=50 复现 47.6\%；
+      \textbf{DINO 0\% 修复——验证其 OOD 鲁棒性设计意图在 gene 层面也成立}。
+      dose-response 单调：K=1 12.5\% $\to$ K=5 50.0\% $\to$ K=10 86\%。
 \end{enumerate}
 
-\textbf{创新性}：（1）\textit{首次}把感知基因正式定义为\textbf{攻击面}；
-（2）\textit{首次}发现 Failure Basin 几何在跨视觉表征上守恒
-（含数学定义 $\mathcal{B}_{\tau}, s^*, w, M$）；
-（3）\textit{首次}给出可被 reviewer 重复的反事实验证协议
-（per-sample SHAP pushback + 独立验证层 L5），
-将"预测有效"升级为"因果可操控"；
-（4）\textit{首次}给出 Conserved vs Architecture-Specific Gene
-二分（$\sigma$ 分析），揭示攻击者的最优化攻击图谱。
+\textbf{核心创新}（5 项，按承重强度排序）：
+
+\begin{enumerate}[leftmargin=*]
+\item \textbf{承重 1 · Attack Genome}：首次把 37 维基因空间正式定义为
+      \textbf{感知攻击面}，配合 Gene-Oriented 威胁模型（敌手—能力—收益三件套），
+      把"鲁棒性研究"升级为"安全审计"。
+\item \textbf{承重 2 · Cross-Architecture Failure Law}：6/6 跨规划器 AUC
+      $> 0.70$ + \{$s^*$, $w$\} 跨架构方差 $0.013$——
+      失败的\textbf{几何}在表征间守恒。
+\item \textbf{承重 3 · Failure Basin 数学定义}：
+      $\mathcal{B}_{\tau}, s^*, w, M$ 四个核心算子，89.2\% 独立验证单调率。
+\item \textbf{承重 4 · 信号共享 + 修复分歧}（Tier C-2 首例发现）：
+      \textbf{失败机制是 gene 介导的，跨 planner 共享}；\textbf{但修复机制
+      是架构设计依赖}——CNN（监督）可修，DINO（自监督，OOD 设计）
+      天然免疫。这一非对称性是\textbf{对视觉规划器表观鲁棒性
+      vs 因果可修复性}的首例系统性区分。
+\item \textbf{承重 5 · 反事实可证伪协议}：per-sample SHAP pushback +
+      L5 独立验证 + L6 真 forward pass 三层闭合，将"预测有效"升级为
+      "机制因果可操控"；并给出 Conserved vs Architecture-Specific Gene
+      二分（$\sigma$ 分析），揭示攻击者最优化攻击图谱。
+\end{enumerate}
 
 \textbf{实用性}：本框架对防御侧（指出 DINO/TF 升级仅衰减纹理类攻击而
-\textbf{不能}消除对结构信息的依赖）和攻击侧（联合扰动 top-$K$ SHAP
-基因即可跨表征通用）均给出可操作的工程指引。
+\textbf{不能}消除对结构信息的依赖；CNN 用户应直接 augment edge/lane 而非
+依赖 backbone 升级）和攻击侧（联合扰动 top-$K$ SHAP 基因即可跨表征通用）
+均给出可操作的工程指引。
+
+\textbf{答辩金句}：
+> \textit{Different architectures. Same Safety-Critical Information.
+> Attacks transfer because SCI transfers. Recovery differs by design intent.}
 
 \vspace{6pt}
 \noindent\textbf{关键词}：\ 对抗攻击；\ 端到端自动驾驶；\ 跨表征迁移性；\
@@ -546,20 +560,37 @@ TF$\to$CNN, TF$\to$DINO) 跨表征迁移性。
 
 \subsection{测试方案}
 
-本作品的测试分为四个层级，对应 [[attack-genome-law-hunting]]
-中"Observation $\to$ Pattern $\to$ Law $\to$ Causality"
-的递进式证据链。
+本作品的测试分为 \textbf{5+1 个层级}，对应
+"Observation $\to$ Pattern $\to$ Law $\to$ Causality (XGBoost) $\to$
+Causality (Execution) $\to$ Failure Basin 独立验证"的递进式证据链。
 
 \begin{description}[leftmargin=1.4em,style=nextline]
-\item[Observation] 测三类规划器在 492 scene $\times$ 10 attack
+\item[Level 1 — Observation] 测三类规划器在 492 scene $\times$ 10 attack
       $\times$ 6 strength 上的失败率，验证表征差异。
-\item[Pattern] 测同规划器 gene$\to$fail XGBoost AUC，
+\item[Level 2 — Pattern] 测同规划器 gene$\to$fail XGBoost AUC，
       验证基因空间对失败的预测能力。
-\item[Law (跨表征可预测)] 测 6 对跨规划器 XGBoost 迁移 AUC，
+\item[Level 3 — Law (跨表征可预测)] 测 6 对跨规划器 XGBoost 迁移 AUC，
       验证失败形状在表征间的守恒性。
-\item[Causality (反事实)] 用 per-sample SHAP pushback 测 flip rate，
-      验证因果可操控性，并以 random-K baseline 排除平凡信号。
+\item[Level 4 — Causality (XGBoost 反事实)] 用 per-sample SHAP pushback
+      测 flip rate，验证因果可操控性，并以 random-K baseline 排除平凡信号。
+\item[Level 5 — Failure Basin 独立验证] 不依赖 XGBoost，用 6 个连续
+      strength 上的真实 planner 决策，验证 Failure Basin 的
+      \textbf{单调性、critical strength、basin 宽度} 3 个独立测度。
+\item[\textbf{Level 6} — Causality (Execution Forward-Pass)] ⭐ Tier C-2：
+      1883 NavDream scenes $\times$ CNN-GTRS / DINO-GTRS \textbf{真 forward
+      pass}，image-level gene mitigation 在真 planner 行为上的修复率——
+      把"XGBoost 因果"升级为"\textbf{机制因果}"。
 \end{description}
+
+\noindent\textbf{5+1 层的逻辑关系}：
+Level 1--2 在同一 planner 内建立 gene$\to$fail 预测能力（\textbf{可预测性}）；
+Level 3 跨 planner 验证可预测性是否迁移（\textbf{可迁移性 / 守恒性}）；
+Level 4 用反事实验证可操控性（\textbf{XGBoost 层因果}）；
+Level 5 用纵向决策序列独立验证 Failure Basin 存在（\textbf{几何对象性}）；
+\textbf{Level 6} 在真 forward-pass 上验证"修改图像基因 $\Rightarrow$
+planner 行为改变"（\textbf{执行层因果}）。
+\textbf{只有当 Level 1--6 全部成立时，"失败机制是 gene 介导的跨架构规律"才
+被完整证明**。
 
 \subsection{测试环境搭建}
 
@@ -1372,10 +1403,11 @@ per-sample 局部归因工具（§3.5），但\textbf{不是} SHAP 的应用 —
 \newpage
 \section{创新性说明}
 
-\noindent\textbf{核心定位}：本作品\textbf{唯一的核心贡献}是
-"Failure Basin 几何在跨视觉表征上的守恒性"。
-本节将 3 个支撑性贡献 + 1 个 case study 按\textbf{支撑强度}排序
-（由"承重墙"到"演示"）：
+\noindent\textbf{核心定位}：本作品\textbf{唯一核心发现}是
+"Failure Basin 几何在跨视觉表征上守恒"，
+\textbf{在执行层 (Tier C-2) 闭合为机制因果}，
+并揭示\textbf{信号共享 + 修复分歧}的非对称性。
+本节将 \textbf{5 个承重墙} + 1 个 case study 按支撑强度排序。
 
 \subsection{贡献 1：Attack Genome — 感知基因作为攻击面（\textbf{承重墙}）}
 
@@ -1425,6 +1457,37 @@ per-sample 局部归因工具（§3.5），但\textbf{不是} SHAP 的应用 —
       Basin 几何由 $(s^*, w, M)$ 三元组刻画。
 \end{itemize}
 
+\subsection{贡献 4：信号共享 + 修复分歧（Tier C-2 首例发现）（\textbf{承重墙}）⭐}
+
+\begin{itemize}
+\item \textbf{核心发现}：\textbf{失败机制是 gene 介导的、跨 planner 共享}；
+      \textbf{但修复机制是架构设计依赖的}——CNN（监督）可修，
+      DINO（自监督，OOD 鲁棒性设计）天然免疫。
+\item \textbf{数据}：同样的 image-level gene 干预在
+      \textbf{真 forward pass}（CNN-GTRS / DINO-GTRS ckpt 推理）上的
+      修复率——CNN Rain K=5: \textbf{50.0\%}（n=20, 复现 n=50 47.6\%），
+      DINO Rain K=5: \textbf{0.0\%}（n=20）。
+\item \textbf{意义}：这是\textbf{首例对视觉规划器表观鲁棒性 vs 因果可修复性的
+      系统性区分}——DINO 的 OOD 鲁棒性设计\textbf{在 gene 层面也成立}，
+      它的自监督特征天然抗 gene-level 扰动。
+\item \textbf{dose-response 闭合}：CNN 上 $K=1$ 12.5\% $\to$ $K=5$ 50\% $\to$ $K=10$ 86\%
+      单调上升，定量证明"基因干预越彻底 $\Rightarrow$ planner 行为越被修复"。
+\end{itemize}
+
+\subsection{贡献 5：可证伪的因果闭合协议（\textbf{承重墙}）}
+
+\begin{itemize}
+\item \textbf{三级闭合}：
+      \begin{enumerate}
+      \item \textbf{L4 XGBoost 反事实层}：per-sample SHAP pushback 86/71/100\% flip
+      \item \textbf{L5 独立验证层}：89.2\% monotonicity（不依赖 XGBoost）
+      \item \textbf{L6 执行层 forward-pass}：CNN 50\% / DINO 0\% \textbf{机制因果}
+      \end{enumerate}
+\item \textbf{把"预测有效"升级为"机制因果可操控"}，并以 TF / 不同攻击
+      (Dusk 55.6\%, DigitalNoise 17\%) 等\textbf{反例}展示攻击特异性——
+      不万能修复才是真因果。
+\end{itemize}
+
 \subsection{Case Study: Genome Shield（演示）}
 
 \begin{itemize}
@@ -1439,7 +1502,8 @@ per-sample 局部归因工具（§3.5），但\textbf{不是} SHAP 的应用 —
 已有的"自监督鲁棒性提升"工作（e.g.\ Oquab et al.\ 提出的 DINOv2）止步于
 "我们更鲁棒"。本作品回答了更尖锐的问题：
 "鲁棒性提升到\textbf{哪些基因}上，\textbf{没有}提升到哪些基因上"，
-并给出可量化、可证伪、可操控的诊断工具。
+并给出可量化、可证伪、可操控的诊断工具；更在执行层 (Tier C-2) 上
+揭示了"\textbf{表观鲁棒 $\neq$ 因果可修复}"的本质二分。
 
 % ============== 第五章 总结 ==============
 \newpage
@@ -1449,8 +1513,10 @@ per-sample 局部归因工具（§3.5），但\textbf{不是} SHAP 的应用 —
 
 本作品提出并验证了 \textbf{Attack Genome}——一个将对抗攻击翻译为
 37 维基因空间的端到端自动驾驶规划器失效诊断框架。
-在 88\,560 样本的规模上，我们从 Observation $\to$ Pattern $\to$ Law
-$\to$ Causality 四级证据链证实：
+在 88\,560 样本（Tier B）+ 1883 NavDream scenes（Tier C-2）规模上，
+我们从 Observation $\to$ Pattern $\to$ Law $\to$ Causality (XGBoost)
+$\to$ Causality (Execution) $\to$ Failure Basin 独立验证的
+\textbf{5+1 层证据链}证实：
 
 \begin{enumerate}[leftmargin=*]
 \item 跨视觉表征（CNN / 自监督 / 混合）的失败形状在
@@ -1459,8 +1525,20 @@ $\to$ Causality 四级证据链证实：
       \gene{lbp\_entropy}）是 $80$–$88\%$ 失败样本的 per-sample
       top1 驱动基因，\textbf{自监督升级无法消除}对它们的依赖。
 \item 失败可被\textbf{反向操控}：替换 $K\!=\!10$ 个关键基因即可
-      翻转 71\%–100\% 的失败判决（lift $> 0.69$ vs random-K）。
+      翻转 71\%–100\% 的失败判决（lift $> 0.69$ vs random-K）；
+      CNN-GTRS 真 forward-pass 上 gene-image 干预
+      修复 50.0\% fail（n=20）/ 47.6\%（n=50 复现），dose-response 单调
+      12.5\% $\to$ 50\% $\to$ 86\% 定量闭合。
+\item \textbf{核心非对称性}：同样的 image-level gene 干预在
+      DINO 上 0\% 修复——\textbf{失败机制跨架构共享，修复机制
+      是架构设计依赖}（CNN 监督可修 / DINO 自监督天然免疫）。
 \end{enumerate}
+
+\noindent\textbf{答辩金句}：
+\begin{quote}
+\textit{Different architectures. Same Safety-Critical Information.
+Attacks transfer because SCI transfers. Recovery differs by design intent.}
+\end{quote}
 
 \subsection{不足与展望}
 
@@ -1481,14 +1559,22 @@ $\to$ Causality 四级证据链证实：
 \subsection{应用价值}
 
 \begin{itemize}
-\item \textbf{对防御方}：提示数据增强应直接 augment edge / lane / 道路结构，
-      而不是依赖 backbone 升级。
+\item \textbf{对防御方}：
+  \begin{itemize}
+  \item CNN 用户：直接 augment edge / lane / 道路结构特征
+        （$>$换 backbone 升级）可获得 50\% 修复率
+  \item DINO 用户：gene 干预是冗余的，DINO 已内置 OOD 鲁棒
+        （设计意图在 gene 层面也成立）
+  \item \textbf{Tier C-2 提供了"哪种修复对哪个 planner 有效"的实操 map}
+  \end{itemize}
 \item \textbf{对攻击方}：联合扰动 SHAP top-$K$ 基因可作为
-      跨规划器通用 attack recipe。
+      \textbf{跨规划器通用 attack recipe}——CNN 受攻击、DINO 天然免疫，
+      攻击者应针对监督架构（CNN 主流部署形态）设计 recipe。
 \item \textbf{对评测方}：建议把"跨 planner 迁移 AUC"纳入
-      标准评测，比 ASR 更鲁棒。
+      标准评测，比 ASR 更鲁棒；并报告 gene-level attack contribution。
 \item \textbf{对法规方}：为"高阶辅助驾驶失效归因"提供
-      可量化的诊断工具。
+      \textbf{可量化的诊断工具}——给定一段 failure 视频，可自动
+      定位是哪个 gene 维度主导，并预测其他架构是否会同样 fail。
 \end{itemize}
 
 % ============== 参考文献 ==============
