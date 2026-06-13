@@ -1,0 +1,44 @@
+{
+  "planner": "CNN",
+  "attack": "Rain",
+  "k": 10,
+  "n_requested": 20,
+  "n_successful": 20,
+  "n_fail": 8,
+  "n_flip": 3,
+  "ade_threshold": 2.0,
+  "flip_rate_overall": 0.15,
+  "flip_rate_over_fail": 0.375,
+  "mean_improvement_m": 0.7586132600903511,
+  "median_improvement_m": 0.13192421197891235,
+  "per_category": [
+    {
+      "top1_category": "color",
+      "n": 2,
+      "n_flip": 0,
+      "flip_rate": 0.0,
+      "mean_improvement": -2.7066140174865723
+    },
+    {
+      "top1_category": "edge_freq",
+      "n": 4,
+      "n_flip": 1,
+      "flip_rate": 0.25,
+      "mean_improvement": 4.052677929401398
+    },
+    {
+      "top1_category": "luma",
+      "n": 13,
+      "n_flip": 2,
+      "flip_rate": 0.15384615384615385,
+      "mean_improvement": 0.3522121631182157
+    },
+    {
+      "top1_category": "other",
+      "n": 1,
+      "n_flip": 0,
+      "flip_rate": 0.0,
+      "mean_improvement": -0.2039766013622284
+    }
+  ]
+}

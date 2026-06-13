@@ -1,0 +1,79 @@
+# ============================================
+# Attack Genome - .gitignore
+# ============================================
+
+# === Python build artifacts ===
+*.pyc
+**/__pycache__/
+.pytest_cache/
+*.egg-info
+.pydevproject
+*.so
+*.egg
+
+# === IDE / Claude state ===
+.idea/
+.vscode/
+.claude/settings.local.json
+.claude/web-access-runtime/
+.claude/skills/web-access/
+
+# === Logs ===
+*.log
+*.bsub
+lightning_logs/
+debug/
+
+# === Large binary artifacts (re-downloadable) ===
+# 98GB of model checkpoints
+models/
+# 655MB of datasets
+datasets/
+download/
+*.pkl
+*.pcd
+*.tar.gz
+*.zip
+*.7z
+
+# === Runtime scratch ===
+outputs/aggregate/
+outputs/_tmp/
+exp/_tmp/
+exp/tierB_partial/smoke/
+exp/tierB_partial/_tmp/
+navsim_workspace/
+
+# === Server-only paths ===
+/data3/
+/mnt/
+
+# === Large pre-existing exp dirs (keep tierC2_wsl!) ===
+exp/tierB_partial/forward_pass_counterfactual/
+exp/tierB_partial/ff/
+exp/tierB_partial/ff3/
+exp/tierB_partial/patterns/
+exp/tierB_partial/patterns3/
+exp/tierB_partial/plots/
+exp/tierB_partial/plots3/
+exp/tierB_partial/figures/
+exp/tierB_partial/risk_auditor/
+exp/tierB_partial/sci_centric/
+exp/tierB_partial/cross_dataset/
+exp/tierB_partial/cross_planner_3pl/
+exp/tierB_partial/cp/
+exp/tierB_partial/genome_shield/
+exp/tierB_partial/failure_basin/
+exp/tierB_partial/failure_basin_cnn/
+exp/tierB_partial/failure_basin_dino/
+exp/tierB_partial/failure_basin_tf/
+exp/tierB_partial/failure_basin_fine/
+exp/clip_analysis/
+exp/failure_factor/
+exp/yolo_genes/
+exp/train_metric_cache/
+exp/figures/
+outputs/ag_*/
+
+# === KEEP (explicit allowlist at bottom, but git doesn't support ! overrides here) ===
+# We use git add with explicit paths to control what we keep

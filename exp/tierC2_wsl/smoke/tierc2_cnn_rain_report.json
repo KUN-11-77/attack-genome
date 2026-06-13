@@ -1,0 +1,29 @@
+{
+  "planner": "CNN",
+  "attack": "Rain",
+  "n_requested": 3,
+  "n_successful": 3,
+  "n_fail": 1,
+  "n_flip": 0,
+  "ade_threshold": 2.0,
+  "flip_rate_overall": 0.0,
+  "flip_rate_over_fail": 0.0,
+  "mean_improvement_m": 1.8616243799527485,
+  "median_improvement_m": 0.8007168173789978,
+  "per_category": [
+    {
+      "top1_category": "edge_freq",
+      "n": 2,
+      "n_flip": 0,
+      "flip_rate": 0.0,
+      "mean_improvement": 2.792436569929123
+    },
+    {
+      "top1_category": "luma",
+      "n": 1,
+      "n_flip": 0,
+      "flip_rate": 0.0,
+      "mean_improvement": 0.0
+    }
+  ]
+}

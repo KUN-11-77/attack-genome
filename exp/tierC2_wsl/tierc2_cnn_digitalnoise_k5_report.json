@@ -1,0 +1,44 @@
+{
+  "planner": "CNN",
+  "attack": "DigitalNoise",
+  "k": 5,
+  "n_requested": 20,
+  "n_successful": 20,
+  "n_fail": 6,
+  "n_flip": 1,
+  "ade_threshold": 2.0,
+  "flip_rate_overall": 0.05,
+  "flip_rate_over_fail": 0.16666666666666666,
+  "mean_improvement_m": -0.8777481853961945,
+  "median_improvement_m": -0.38114047050476074,
+  "per_category": [
+    {
+      "top1_category": "color",
+      "n": 1,
+      "n_flip": 0,
+      "flip_rate": 0.0,
+      "mean_improvement": -3.9719667434692383
+    },
+    {
+      "top1_category": "edge_freq",
+      "n": 13,
+      "n_flip": 0,
+      "flip_rate": 0.0,
+      "mean_improvement": -0.2794356873402229
+    },
+    {
+      "top1_category": "luma",
+      "n": 5,
+      "n_flip": 0,
+      "flip_rate": 0.0,
+      "mean_improvement": -2.143044573068619
+    },
+    {
+      "top1_category": "other",
+      "n": 1,
+      "n_flip": 1,
+      "flip_rate": 1.0,
+      "mean_improvement": 0.7648898363113403
+    }
+  ]
+}
